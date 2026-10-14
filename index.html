@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taller de Bicicletas - Gestión de Reparaciones</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Encabezado -->
+  <header class="header">
+    <div class="container header-container">
+      <h1>Taller de Bicicletas</h1>
+      <button id="btn-nueva-orden" class="btn btn-primary">+ Nueva Orden</button>
+    </div>
+  </header>
+
+  <!-- Contenido principal -->
+  <main class="container main-content">
+
+<!-- Filtros de búsqueda y estado -->
+    <section class="filters-bar">
+      <div class="filter-group">
+        <label for="filtro-estado">Estado:</label>
+        <select id="filtro-estado">
+          <option value="">Todos los estados</option>
+          <option value="Pendiente">Pendiente</option>
+          <option value="En reparación">En reparación</option>
+          <option value="Terminada">Terminada</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <input type="text" id="input-cliente" placeholder="Código cliente exacto">
+      </div>
+
+      <div class="filter-group">
+        <input type="text" id="input-bici" placeholder="Filtrar bicicleta">
+      </div>
+
+      <div class="filter-group">
+        <input type="text" id="input-problema" placeholder="Filtrar problema">
+      </div>
+    </section>
+
+    <!-- Tablero de órdenes (Columnas por estado) -->
+    <section class="kanban-board">
+      
+      <!-- Columna Pendiente -->
+      <div class="kanban-column" id="col-pendiente">
+        <div class="column-header status-pendiente">
+          <h2>Pendiente <span class="badge" id="badge-pendiente">0</span></h2>
+        </div>
+        <div class="cards-container" id="lista-pendiente"></div>
+      </div>
+
+      <!-- Columna En Reparación -->
+      <div class="kanban-column" id="col-en-reparacion">
+        <div class="column-header status-en-reparacion">
+          <h2>En reparación <span class="badge" id="badge-en-reparacion">0</span></h2>
+        </div>
+        <div class="cards-container" id="lista-en-reparacion"></div>
+      </div>
+
+      <!-- Columna Terminada -->
+      <div class="kanban-column" id="col-terminada">
+        <div class="column-header status-terminada">
+          <h2>Terminada <span class="badge" id="badge-terminada">0</span></h2>
+        </div>
+        <div class="cards-container" id="lista-terminada"></div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Modal para crear nueva orden -->
+  <div class="modal-overlay" id="modal-orden" style="display: none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>Nueva Orden de Reparación</h2>
+        <button class="btn-close" id="btn-cerrar-modal">&times;</button>
+      </div>
+      <form id="form-orden">
+        <div class="form-group">
+          <label for="codigo_cliente">Código de Cliente (ficticio):</label>
+          <input type="text" id="codigo_cliente" required placeholder="Ej. CLI-1001">
+        </div>
+        <div class="form-group">
+          <label for="descripcion_bici">Descripción de la Bici:</label>
+          <input type="text" id="descripcion_bici" required placeholder="Ej. Orbea Alma M50 (Azul)">
+        </div>
+        <div class="form-group">
+          <label for="problema">Problema / Mantenimiento:</label>
+          <textarea id="problema" rows="3" required placeholder="Ej. Ajuste de cambios y purgado de frenos"></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" id="btn-cancelar">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar Orden</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
