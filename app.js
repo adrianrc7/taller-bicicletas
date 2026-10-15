@@ -49,7 +49,6 @@ async function cargarOrdenes() {
     const cliente = inputCliente.value.trim();
     const bici = inputBici.value.trim();
     const problema = inputProblema.value.trim();
-I
     const params = new URLSearchParams();
     if (estado) params.append("estado", estado);
     if (cliente) params.append("codigo_cliente", cliente);
